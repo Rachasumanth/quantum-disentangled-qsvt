@@ -8,7 +8,7 @@
 This repository contains the complete experimental code, mathematical simulations, academic figures, and physical hardware artifacts for our research paper:
 
 > **"Empirical Optimization of QSVT Polynomial Block-Encodings and Multi-Scale Quantum Tensor Network Disentanglers on 156-Qubit Superconducting Hardware"**  
-> *Author: Sumanth Racha (<sumanthracha81@gmail.com>)*  
+> *Author: Racha Sumanth (<sumanthracha81@gmail.com>)*  
 > *Hardware Artifact: IBM Quantum `ibm_fez` (Heron r2, 156 Qubits) | Job ID: `dbabdmfi0auc7391p3qg`*
 
 ---
