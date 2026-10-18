@@ -1,15 +1,32 @@
-# Empirical Optimization of QSVT Attention Block-Encodings & QTN Disentanglers on 156-Qubit IBM Hardware
+# Quantum Computing Research Publications: QSVT Attention & QTN Disentanglers
 
 [![Qiskit](https://img.shields.io/badge/Qiskit-2.5.2-6929C4.svg)](https://qiskit.org/)
 [![IBM Quantum](https://img.shields.io/badge/IBM_Quantum-Heron_156Q-0062FF.svg)](https://quantum.ibm.com/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![arXiv / TechRxiv](https://img.shields.io/badge/Preprint-TechRxiv-B31B1B.svg)](https://techrxiv.org/)
+[![Preprint](https://img.shields.io/badge/Preprints-Open_Access-B31B1B.svg)](https://github.com/Rachasumanth/quantum-disentangled-qsvt)
 
-This repository contains the complete experimental code, mathematical simulations, academic figures, and physical hardware artifacts for our research paper:
+This repository contains two independent research papers, complete mathematical simulations, academic figures, and physical hardware artifacts executed on IBM Quantum's 156-qubit Heron r2 superconducting hardware (`ibm_fez`):
 
-> **"Empirical Optimization of QSVT Polynomial Block-Encodings and Multi-Scale Quantum Tensor Network Disentanglers on 156-Qubit Superconducting Hardware"**  
-> *Author: Racha Sumanth (<sumanthracha81@gmail.com>)*  
-> *Hardware Artifact: IBM Quantum `ibm_fez` (Heron r2, 156 Qubits) | Job ID: `dbabdmfi0auc7391p3qg`*
+* **Author:** Racha Sumanth ([sumanthracha81@gmail.com](mailto:sumanthracha81@gmail.com))
+* **Hardware Artifact:** IBM Quantum `ibm_fez` (Heron r2, 156 Qubits) | Job ID: `dbabdmfi0auc7391p3qg`
+
+---
+
+## 📄 The Two Research Papers
+
+### 📑 Paper 1: QSVT Quantum Attention Block-Encoding
+> **"Autonomous Polynomial Optimization for QSVT Softmax Block-Encodings on Superconducting Quantum Processors"**
+> * **LaTeX Source:** [`paper/paper1_qsvt_attention/manuscript_paper1.tex`](paper/paper1_qsvt_attention/manuscript_paper1.tex)
+> * **Markdown Paper:** [`paper/paper1_qsvt_attention/manuscript_paper1.md`](paper/paper1_qsvt_attention/manuscript_paper1.md)
+> * **Key Contribution:** Resolves subnormalization amplitude collapse ($\alpha = 1.5$) via 300-restart Chebyshev polynomial synthesis, achieving $\ge 99.9\%$ fidelity across embedding dimensions $d \in \{4, 8, 16\}$ with circuit depth 98 (27 CZ gates) on IBM Heron.
+
+### 📑 Paper 2: Multi-Scale QTN Boundary Disentanglers
+> **"Empirical Optimization of Two-Qubit Boundary Disentanglers for Entanglement Entropy Reduction in Quantum Tensor Networks on 156-Qubit Hardware"**
+> * **LaTeX Source:** [`paper/paper2_qtn_disentanglers/manuscript_paper2.tex`](paper/paper2_qtn_disentanglers/manuscript_paper2.tex)
+> * **Markdown Paper:** [`paper/paper2_qtn_disentanglers/manuscript_paper2.md`](paper/paper2_qtn_disentanglers/manuscript_paper2.md)
+> * **Key Contribution:** Unconstrained coordinate-descent parameterization of $SU(4)$ disentanglers reducing bipartite entanglement entropy by $87.75\%$ ($2.0000 \to 0.2450$ bits), achieving $99.85\%$ fidelity under $\chi=2$ bond dimension truncation. Physically verified on IBM Quantum `ibm_fez` (Job `dbabdmfi0auc7391p3qg`, 1,024 shots).
+
+*(Note: A unified combined manuscript is also preserved in [`paper/manuscript.tex`](paper/manuscript.tex)).*
 
 ---
 
@@ -25,17 +42,14 @@ This repository contains the complete experimental code, mathematical simulation
 
 ## 📊 Scientific Figures
 
-### Figure 1: QSVT Quantum Attention Fidelity Scaling
-Convergence of quantum self-attention block-encoding across dimensions $d \in \{4, 8, 16\}$ under polynomial refinement with subnormalization $\alpha = 1.5$.
-![Figure 1: QSVT Attention Fidelity Scaling](figures/fig1_qsvt_fidelity_scaling.png)
+* **Figure 1: QSVT Quantum Attention Fidelity Scaling**  
+  ![Figure 1: QSVT Attention Fidelity Scaling](figures/fig1_qsvt_fidelity_scaling.png)
 
-### Figure 2: QTN Boundary Disentangler Optimization
-87.75% reduction in bipartite entanglement entropy and resulting Schmidt spectrum collapse onto the primary computational subspace.
-![Figure 2: QTN Entanglement Recovery](figures/fig2_qtn_entropy_recovery.png)
+* **Figure 2: QTN Boundary Disentangler Optimization**  
+  ![Figure 2: QTN Entanglement Recovery](figures/fig2_qtn_entropy_recovery.png)
 
-### Figure 3: Physical Gate Footprint on 156-Qubit IBM Heron
-Transpiled depth and native gate breakdown (CZ, SX, RZ) targeting `ibm_fez`.
-![Figure 3: Hardware Gate Breakdown](figures/fig3_ibm_hardware_transpilation.png)
+* **Figure 3: Physical Gate Footprint on 156-Qubit IBM Heron**  
+  ![Figure 3: Hardware Gate Breakdown](figures/fig3_ibm_hardware_transpilation.png)
 
 ---
 
@@ -65,7 +79,7 @@ cd quantum-disentangled-qsvt
 pip install -r requirements.txt
 ```
 
-### 2. Run QSVT Attention Optimization
+### 2. Run QSVT Attention Optimization (Paper 1)
 ```bash
 python3 -c "
 from src.qsvt_attention import QSVTAttentionEncoder
@@ -77,7 +91,7 @@ print(f'Fidelity achieved: {fid:.4f}')
 "
 ```
 
-### 3. Run QTN Disentangler
+### 3. Run QTN Disentangler (Paper 2)
 ```bash
 python3 -c "
 from src.qtn_disentangler import QTNBoundaryDisentangler
@@ -90,25 +104,21 @@ print(f'Final Entanglement Entropy: {entropy_final:.4f} bits (Baseline 2.0000)')
 
 ---
 
-## 📄 Manuscript Formats
-The complete formal academic papers are available in the [`paper/`](paper/) directory:
-* **LaTeX IEEE Conference Source:** [`paper/manuscript.tex`](paper/manuscript.tex)
-* **Markdown Extended Manuscript:** [`paper/manuscript.md`](paper/manuscript.md)
-
----
-
-## 📚 Citation
-
-If you use this code, data, or methodology in your research, please cite:
+## 📚 Citations
 
 ```bibtex
-@article{racha2026empirical,
-  title={Empirical Optimization of QSVT Polynomial Block-Encodings and Multi-Scale Quantum Tensor Network Disentanglers on 156-Qubit Superconducting Hardware},
-  author={Racha, Sumanth},
-  journal={TechRxiv Preprint},
-  year={2026},
-  publisher={IEEE},
-  doi={10.36227/techrxiv.2026.quantum-disentangled-qsvt}
+@article{sumanth2026qsvt,
+  title={Autonomous Polynomial Optimization for QSVT Softmax Block-Encodings on Superconducting Quantum Processors},
+  author={Sumanth, Racha},
+  journal={Preprint},
+  year={2026}
+}
+
+@article{sumanth2026qtn,
+  title={Empirical Optimization of Two-Qubit Boundary Disentanglers for Entanglement Entropy Reduction in Quantum Tensor Networks on 156-Qubit Hardware},
+  author={Sumanth, Racha},
+  journal={Preprint},
+  year={2026}
 }
 ```
 
