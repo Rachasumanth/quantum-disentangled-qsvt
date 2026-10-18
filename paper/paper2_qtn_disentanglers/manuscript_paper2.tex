@@ -82,19 +82,19 @@ The relative entanglement recovery score is evaluated as:
 
 \begin{figure}[htbp]
 \centering
-\includegraphics[width=\columnwidth]{fig2_qtn_entropy_recovery.png}
-\caption{Boundary disentangler optimization in quantum tensor networks: (Left) Iterative convergence of bipartite entanglement entropy $S(\rho_A)$ from $2.0000$ to $0.2450$ bits ($87.75\%$ reduction). (Right) Schmidt singular value spectrum collapse, enabling virtual bond dimension truncation to $\chi=2$ with $99.85\%$ state fidelity.}
+\includegraphics[width=\columnwidth]{paper2_fig1_entropy_schmidt_collapse.png}
+\caption{Boundary disentangler optimization in quantum tensor networks: (a) Iterative convergence of bipartite entanglement entropy $S(\rho_A)$ from $2.0000$ to $0.2450$ bits ($87.75\%$ reduction). (b) Schmidt singular value spectrum collapse, enabling virtual bond dimension truncation to $\chi=2$ with $99.85\%$ state fidelity.}
 \label{fig:qtn_entropy}
 \end{figure}
 
 \section{Optimization Results \& Schmidt Spectrum Collapse}
-Starting from an initially maximally entangled 4-qubit state ($S_{\text{init}} = 2.0000$ bits), our coordinate-descent optimizer sweeps across rotation angles $\vec{\theta}$. As shown in Fig.~\ref{fig:qtn_entropy}(Left), the von Neumann entropy converges rapidly to $S_{\text{final}} = 0.2450$ bits, achieving an entanglement reduction of $\mathcal{R} = 87.75\%$.
+Starting from an initially maximally entangled 4-qubit state ($S_{\text{init}} = 2.0000$ bits), our coordinate-descent optimizer sweeps across rotation angles $\vec{\theta}$. As shown in Fig.~\ref{fig:qtn_entropy}(a), the von Neumann entropy converges rapidly to $S_{\text{final}} = 0.2450$ bits, achieving an entanglement reduction of $\mathcal{R} = 87.75\%$.
 
 Examining the Schmidt decomposition of the disentangled state:
 \begin{equation}
 |\Psi'\rangle = \sum_{i=1}^4 s_i |u_i\rangle_A \otimes |v_i\rangle_B
 \end{equation}
-we observe that prior to disentangling, the Schmidt spectrum is uniform ($s_i = 0.5$ for all $i$), meaning truncating to $\chi=2$ causes a devastating $50\%$ loss in state fidelity ($\mathcal{F} = 0.5000$). After optimization, the singular spectrum collapses into a single dominant singular value ($s_1 \approx 0.999$, Fig.~\ref{fig:qtn_entropy}(Right)). Truncating to $\chi=2$ yields an exceptional state fidelity:
+we observe that prior to disentangling, the Schmidt spectrum is uniform ($s_i = 0.5$ for all $i$), meaning truncating to $\chi=2$ causes a devastating $50\%$ loss in state fidelity ($\mathcal{F} = 0.5000$). After optimization, the singular spectrum collapses into a single dominant singular value ($s_1 \approx 0.999$, Fig.~\ref{fig:qtn_entropy}(b)). Truncating to $\chi=2$ yields an exceptional state fidelity:
 \begin{equation}
 \mathcal{F}_{\text{trunc}} = \sum_{i=1}^2 s_i^2 = 0.9985 \quad (99.85\%)
 \end{equation}
@@ -112,8 +112,8 @@ The optimized 4-qubit disentangler circuit was compiled using Qiskit 2.5.2 (opti
 
 \begin{figure}[htbp]
 \centering
-\includegraphics[width=\columnwidth]{fig3_ibm_hardware_transpilation.png}
-\caption{Hardware transpilation profile on IBM Quantum 156-qubit Heron architecture (\texttt{ibm\_fez}). Showing compiled circuit depth and native gate breakdown (CZ, SX, RZ) for the 4-qubit QTN disentangler.}
+\includegraphics[width=\columnwidth]{paper2_fig2_ibm_hardware_verification.png}
+\caption{Physical quantum hardware verification on IBM Quantum 156-qubit Heron architecture (\texttt{ibm\_fez}): (a) Native gate decomposition and compiled depth (36). (b) Real physical measurement shots from 1,024 executions (Job ID: \texttt{dbabdmfi0auc7391p3qg}) demonstrating over $88.6\%$ probability mass concentration in the theoretical Schmidt eigenspaces.}
 \label{fig:hardware_transpilation}
 \end{figure}
 

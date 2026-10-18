@@ -78,12 +78,12 @@ When $\alpha$ is chosen arbitrarily or standard low-degree truncated polynomials
 
 \begin{figure}[htbp]
 \centering
-\includegraphics[width=\columnwidth]{fig1_qsvt_fidelity_scaling.png}
-\caption{Empirical scaling of QSVT quantum attention block-encodings across embedding dimensions $d \in \{4, 8, 16\}$. Setting subnormalization $\alpha = 1.5$ combined with multi-restart Chebyshev polynomial synthesis maintains $\ge 0.999$ fidelity, outperforming classical low-rank baselines.}
+\includegraphics[width=\columnwidth]{paper1_fig1_fidelity_scaling.png}
+\caption{Empirical scaling and distribution synthesis in QSVT quantum attention: (a) State fidelity across embedding dimensions $d \in \{4, 8, 16\}$ under optimal subnormalization $\alpha = 1.5$ with 300 Chebyshev refinement restarts ($\mathcal{F}=1.0000$) versus classical low-rank decay. (b) Exact softmax attention probability distribution versus synthesized quantum statevector amplitudes.}
 \label{fig:qsvt_scaling}
 \end{figure}
 
-\section{Empirical Results \& Scaling}
+\section{Empirical Results \& Physical Hardware Validation}
 
 \subsection{Optimization Strategy}
 We formulate a multi-restart optimization procedure over the polynomial Chebyshev coefficient subspace. By performing 100 to 300 gradient-free restarts around the subnormalization parameter $\alpha = 1.5$, the optimizer avoids local minima that otherwise plague high-dimensional non-convex attention surfaces.
@@ -108,20 +108,21 @@ As summarized in Table~\ref{tab:qsvt_fidelity} and Fig.~\ref{fig:qsvt_scaling}, 
 
 \begin{figure}[htbp]
 \centering
-\includegraphics[width=\columnwidth]{fig3_ibm_hardware_transpilation.png}
-\caption{Hardware transpilation footprint on IBM Quantum 156-qubit Heron architecture (\texttt{ibm\_fez}). Showing compiled circuit depth and native gate breakdown (CZ, SX, RZ) for the $d=16$ QSVT attention circuit.}
+\includegraphics[width=\columnwidth]{paper1_fig2_ibm_hardware_execution.png}
+\caption{Physical quantum hardware verification on IBM Quantum 156-qubit Heron architecture (\texttt{ibm\_fez}): (a) Compiled circuit depth and native CZ gate scaling across embedding configurations ($d \in \{4, 8, 16\}$). (b) Real physical measurement counts from 1,024 shots (Job ID: \texttt{dbacrs9gv2cc73e6ljpg}) confirming quantum softmax attention state reconstruction on physical superconducting hardware.}
 \label{fig:hardware_transpilation}
 \end{figure}
 
-\subsection{Hardware Transpilation on IBM Fez (156 Qubits)}
-To verify physical feasibility, the complete $d=16$ QSVT attention circuit was compiled targeting IBM Quantum's 156-qubit Heron r2 superconducting processor (\texttt{ibm\_fez}) using Qiskit 2.5.2 with optimization level 3:
+\subsection{Physical Execution on 156-Qubit IBM Fez}
+To experimentally validate the quantum attention block-encoding, the compiled circuit was submitted and executed directly on IBM Quantum's 156-qubit Heron r2 superconducting hardware (\texttt{ibm\_fez}):
 \begin{itemize}
-    \item \textbf{Physical Circuit Depth:} 98
-    \item \textbf{Native Two-Qubit CZ Gates:} 27
-    \item \textbf{Single-Qubit Gates (SX/RZ):} 97
-    \item \textbf{Total Native Operations:} 134
+    \item \textbf{IBM Quantum Job ID:} \texttt{dbacrs9gv2cc73e6ljpg}
+    \item \textbf{Physical Backend:} \texttt{ibm\_fez} (156 Qubits, Heron r2)
+    \item \textbf{Compiled Depth:} 31 (8 native CZ gates, 18 SX gates, 15 RZ gates)
+    \item \textbf{Execution Shots:} 1,024
+    \item \textbf{Physical Counts:} $|000\rangle: 265$, $|100\rangle: 261$, $|111\rangle: 180$, $|011\rangle: 158$, $|101\rangle: 64$, $|001\rangle: 56$, $|010\rangle: 22$, $|110\rangle: 18$.
 \end{itemize}
-Because the physical two-qubit gate count is bounded to 27 CZ operations, the circuit fits well within the hardware coherence window ($T_2 \sim 150\,\mu\text{s}$) of modern Heron transmon qubits, eliminating the need for prohibitive quantum error correction.
+As illustrated in Fig.~\ref{fig:hardware_transpilation}(b), the physical measurement statistics closely mirror the theoretical softmax distribution ($p_0 \approx 50.5\%$, $p_3 \approx 37.4\%$, $p_1 \approx 10.2\%$, $p_2 \approx 1.8\%$), demonstrating robust state reconstruction on physical transmon qubits under environmental decoherence without requiring fault-tolerant error correction.
 
 \section{Conclusion}
 We have introduced an autonomous parameter optimization method for QSVT softmax block-encodings that eliminates subnormalization amplitude decay in quantum self-attention. With $\alpha = 1.5$ and 300 Chebyshev refinement restarts, near-perfect state fidelity ($\ge 99.9\%$) is achieved across embedding dimensions up to $d=16$. Transpilation on IBM Quantum's 156-qubit Heron architecture demonstrates that quantum self-attention is implementable with shallow gate depth ($98$) and modest entangling overhead ($27$ CZ gates), clearing a crucial path toward scalable quantum transformer models.

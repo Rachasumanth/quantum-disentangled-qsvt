@@ -33,3 +33,9 @@ Simulating strongly correlated many-body quantum systems using Quantum Tensor Ne
   * $|1101\rangle$: 303 shots
   * $|0001\rangle$: 149 shots
   * $|1110\rangle$: 123 shots
+
+---
+
+## Figures
+* **Figure 1:** `paper2_fig1_entropy_schmidt_collapse.png` (Convergence of bipartite entanglement entropy from 2.0000 to 0.2450 bits and Schmidt singular value spectrum collapse).
+* **Figure 2:** `paper2_fig2_ibm_hardware_verification.png` (Native gate breakdown on Heron architecture and physical measurement histogram from IBM Quantum `ibm_fez` with Job `dbabdmfi0auc7391p3qg`).
