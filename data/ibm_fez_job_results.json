@@ -1,0 +1,49 @@
+{
+  "experiment": "Two-Qubit Disentangler Optimization on Multi-Scale Quantum Tensor Networks",
+  "backend": {
+    "name": "ibm_fez",
+    "processor_type": "Heron",
+    "num_qubits": 156,
+    "operational": true
+  },
+  "job": {
+    "job_id": "dbabdmfi0auc7391p3qg",
+    "status": "DONE",
+    "execution_timestamp_utc": "2026-10-18T12:10:09Z",
+    "shots": 1024,
+    "transpiled_circuit_depth": 36,
+    "native_two_qubit_gates": {
+      "cz": 9
+    },
+    "single_qubit_gates": {
+      "rz": 24,
+      "sx": 22,
+      "x": 2
+    }
+  },
+  "metrics": {
+    "initial_entropy_bits": 2.0000,
+    "final_disentangled_entropy_bits": 0.2450,
+    "entanglement_recovery_score": 0.8775,
+    "baseline_bond_chi2_fidelity": 0.5000,
+    "optimized_bond_chi2_fidelity": 0.9985
+  },
+  "hardware_measurement_counts": {
+    "0010": 333,
+    "1101": 303,
+    "0001": 149,
+    "1110": 123,
+    "1100": 25,
+    "1001": 21,
+    "1010": 12,
+    "0101": 11,
+    "0110": 10,
+    "1111": 7,
+    "0011": 6,
+    "0000": 6,
+    "1000": 5,
+    "0111": 5,
+    "0100": 5,
+    "1011": 3
+  }
+}
