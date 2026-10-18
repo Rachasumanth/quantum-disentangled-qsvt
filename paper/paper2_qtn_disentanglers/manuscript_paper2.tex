@@ -18,7 +18,7 @@
 \title{Empirical Optimization of Two-Qubit Boundary Disentanglers for Entanglement Entropy Reduction in Quantum Tensor Networks on 156-Qubit Hardware}
 
 \author{\IEEEauthorblockN{Racha Sumanth}
-\IEEEauthorblockA{\textit{Quantum Information Science Research Group} \\
+\IEEEauthorblockA{\textit{Swadeshi AI Private Limited} \\
 Hyderabad, India \\
 sumanthracha81@gmail.com}
 }
@@ -120,15 +120,16 @@ The optimized 4-qubit disentangler circuit was compiled using Qiskit 2.5.2 (opti
 \begin{table}[htbp]
 \caption{Hardware Transpilation Comparison on \texttt{ibm\_fez}}
 \label{tab:hardware}
-\begin{center}
-\begin{tabular}{lcccc}
+\centering
+\resizebox{\columnwidth}{!}{%
+\begin{tabular}{@{}lcccc@{}}
 \toprule
 \textbf{Circuit} & \textbf{Physical Depth} & \textbf{CZ Gates} & \textbf{SX/RZ Gates} & \textbf{Total Ops} \\
 \midrule
 QTN Disentangler (4-Qubit) & 36 & 9 & 46 & 61 \\
 \bottomrule
-\end{tabular}
-\end{center}
+\end{tabular}%
+}
 \end{table}
 
 \subsection{Physical Execution & Hardware Coherence}

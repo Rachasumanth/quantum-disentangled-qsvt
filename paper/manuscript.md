@@ -1,7 +1,7 @@
 # Empirical Optimization of QSVT Polynomial Block-Encodings and Multi-Scale Quantum Tensor Network Disentanglers on 156-Qubit Superconducting Hardware
 
 **Authors:** Racha Sumanth (sumanthracha81@gmail.com)  
-**Affiliation:** Independent Research / Quantum Information Science Group  
+**Affiliation:** Swadeshi AI Private Limited, Hyderabad, India  
 **Target Venue:** IEEE International Conference on Quantum Computing and Engineering (QCE) / TechRxiv  
 **Code & Data Repository:** [https://github.com/Rachasumanth/quantum-disentangled-qsvt](https://github.com/Rachasumanth/quantum-disentangled-qsvt)  
 **Hardware Artifact:** IBM Quantum `ibm_fez` (Heron r2, 156 Qubits) | Job ID: `dbabdmfi0auc7391p3qg`

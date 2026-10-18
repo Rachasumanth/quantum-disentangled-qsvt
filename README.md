@@ -8,6 +8,7 @@
 This repository contains two independent research papers, complete mathematical simulations, academic figures, and physical hardware artifacts executed on IBM Quantum's 156-qubit Heron r2 superconducting hardware (`ibm_fez`):
 
 * **Author:** Racha Sumanth ([sumanthracha81@gmail.com](mailto:sumanthracha81@gmail.com))
+* **Affiliation:** Swadeshi AI Private Limited, Hyderabad, India
 * **Hardware Artifact:** IBM Quantum `ibm_fez` (Heron r2, 156 Qubits) | Job ID: `dbabdmfi0auc7391p3qg`
 
 ---

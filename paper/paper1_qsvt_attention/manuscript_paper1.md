@@ -1,7 +1,7 @@
 # Autonomous Polynomial Optimization for QSVT Softmax Block-Encodings on Superconducting Quantum Processors
 
 **Author:** Racha Sumanth (sumanthracha81@gmail.com)  
-**Affiliation:** Quantum Information Science Research Group, Hyderabad, India  
+**Affiliation:** Swadeshi AI Private Limited, Hyderabad, India  
 **Target Venues:** IEEE QCE / ACM TQC / Zenodo / arXiv (`quant-ph`)  
 **Code Repository:** [https://github.com/Rachasumanth/quantum-disentangled-qsvt](https://github.com/Rachasumanth/quantum-disentangled-qsvt)  
 **Physical Hardware Proof:** IBM Quantum `ibm_fez` (156-Qubit Heron r2) | Job ID: `dbacrs9gv2cc73e6ljpg`

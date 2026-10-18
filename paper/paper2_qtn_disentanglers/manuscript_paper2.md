@@ -1,7 +1,7 @@
 # Empirical Optimization of Two-Qubit Boundary Disentanglers for Entanglement Entropy Reduction in Quantum Tensor Networks on 156-Qubit Hardware
 
 **Author:** Racha Sumanth (sumanthracha81@gmail.com)  
-**Affiliation:** Quantum Information Science Research Group, Hyderabad, India  
+**Affiliation:** Swadeshi AI Private Limited, Hyderabad, India  
 **Target Venues:** IEEE QCE / IEEE TQE / Zenodo / arXiv (`quant-ph`)  
 **Code Repository:** [https://github.com/Rachasumanth/quantum-disentangled-qsvt](https://github.com/Rachasumanth/quantum-disentangled-qsvt)  
 **Hardware Proof:** IBM Quantum `ibm_fez` (Heron r2, 156 Qubits) | Job ID: `dbabdmfi0auc7391p3qg`

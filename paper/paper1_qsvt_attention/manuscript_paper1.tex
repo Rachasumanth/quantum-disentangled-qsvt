@@ -18,7 +18,7 @@
 \title{Autonomous Polynomial Optimization for QSVT Softmax Block-Encodings on Superconducting Quantum Processors}
 
 \author{\IEEEauthorblockN{Racha Sumanth}
-\IEEEauthorblockA{\textit{Quantum Information Science Research Group} \\
+\IEEEauthorblockA{\textit{Swadeshi AI Private Limited} \\
 Hyderabad, India \\
 sumanthracha81@gmail.com}
 }
@@ -91,17 +91,20 @@ We formulate a multi-restart optimization procedure over the polynomial Chebyshe
 \begin{table}[htbp]
 \caption{Quantum State Fidelity Across Embedding Dimensions}
 \label{tab:qsvt_fidelity}
-\begin{center}
+\centering
+\setlength{\tabcolsep}{3.5pt}
+\resizebox{\columnwidth}{!}{%
 \begin{tabular}{ccccc}
 \toprule
-\textbf{Dimension} & \textbf{Qubits} & \textbf{Classical Baseline} & \textbf{QSVT (100 Restarts)} & \textbf{QSVT (300 Restarts)} \\
+\textbf{Dimension} & \textbf{Qubits} & \textbf{Classical} & \textbf{QSVT} & \textbf{QSVT} \\
+ & & \textbf{Baseline} & \textbf{(100 Restarts)} & \textbf{(300 Restarts)} \\
 \midrule
 $d = 4$  & 2 & 0.9918 & 1.0000 & \textbf{1.0000} \\
 $d = 8$  & 3 & 0.9943 & 1.0000 & \textbf{1.0000} \\
 $d = 16$ & 4 & 0.9995 & 1.0000 & \textbf{1.0000} \\
 \bottomrule
-\end{tabular}
-\end{center}
+\end{tabular}%
+}
 \end{table}
 
 As summarized in Table~\ref{tab:qsvt_fidelity} and Fig.~\ref{fig:qsvt_scaling}, the QSVT approach achieves $\mathcal{F} = 1.0000$ across all tested dimensions ($d \in \{4, 8, 16\}$). In contrast, classical low-rank truncations suffer from systematic approximation errors that degrade the attention distribution as context dimensionality expands.
