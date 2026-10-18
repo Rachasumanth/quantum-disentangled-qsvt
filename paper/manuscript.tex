@@ -4,6 +4,7 @@
 \usepackage{amsmath,amssymb,amsfonts}
 \usepackage{algorithmic}
 \usepackage{graphicx}
+\graphicspath{{figures/}{./}}
 \usepackage{textcomp}
 \usepackage{xcolor}
 \usepackage{hyperref}
@@ -79,14 +80,30 @@ The entanglement recovery score is evaluated as:
 \begin{equation}
 \mathcal{R} = \frac{S_{\text{init}} - S_{\text{final}}}{S_{\text{init}}}
 \end{equation}
+As illustrated in Fig.~\ref{fig:qtn_disentangler}, coordinate-descent parameter sweeps over $\vec{\theta}$ suppress bipartite entanglement from $S_{\text{init}} = 2.0000$ to $S_{\text{final}} = 0.2450$ bits ($\mathcal{R} = 87.75\%$), concentrating the Schmidt singular value spectrum into a dominant eigenspace and enabling bond dimension truncation to $\chi=2$ with $99.85\%$ state fidelity.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=\columnwidth]{fig2_qtn_entropy_recovery.png}
+\caption{Boundary disentangler optimization in quantum tensor networks: (Left) Iterative convergence of bipartite entanglement entropy $S(\rho_A)$ from $2.0000$ to $0.2450$ bits ($87.75\%$ reduction). (Right) Schmidt singular value spectrum collapse enabling $\chi=2$ virtual bond dimension truncation with $99.85\%$ state fidelity.}
+\label{fig:qtn_disentangler}
+\end{figure}
 
 \section{Experimental Results \& Hardware Validation}
 
 \subsection{QSVT Attention Scaling}
-We evaluated fidelity across dimensions $d \in \{4, 8, 16\}$ against truncated classical low-rank baselines ($k = \max(2, d/4)$).
+We evaluated fidelity across dimensions $d \in \{4, 8, 16\}$ against truncated classical low-rank baselines ($k = \max(2, d/4)$). As shown in Table~\ref{tab:qsvt_fidelity} and Fig.~\ref{fig:qsvt_scaling}, setting subnormalization $\alpha = 1.5$ with 300 Chebyshev optimization restarts achieves $1.0000$ fidelity, preventing the severe degradation observed in low-rank approximations.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=\columnwidth]{fig1_qsvt_fidelity_scaling.png}
+\caption{Empirical scaling of QSVT quantum attention block-encodings across embedding dimensions $d \in \{4, 8, 16\}$. Setting $\alpha = 1.5$ with multi-start Chebyshev polynomial synthesis maintains $\ge 0.999$ fidelity, whereas classical low-rank approximations degrade substantially as dimensionality scales.}
+\label{fig:qsvt_scaling}
+\end{figure}
 
 \begin{table}[htbp]
 \caption{State Fidelity Comparison Across Optimization Restarts}
+\label{tab:qsvt_fidelity}
 \begin{center}
 \begin{tabular}{ccccc}
 \toprule
@@ -101,10 +118,18 @@ $d = 16$ & 4 & 0.9995 & 1.0000 & \textbf{1.0000} \\
 \end{table}
 
 \subsection{Physical Execution on 156-Qubit IBM Fez}
-The optimized circuits were compiled using Qiskit 2.5.2 with optimization level 3 and dispatched to \texttt{ibm\_fez} (Heron r2, 156 qubits):
+The optimized circuits were compiled using Qiskit 2.5.2 with optimization level 3 and dispatched to \texttt{ibm\_fez} (Heron r2, 156 qubits). Fig.~\ref{fig:hardware_transpilation} and Table~\ref{tab:hardware} report the compiled physical depth and native gate decomposition (\texttt{cz}, \texttt{sx}, \texttt{rz}).
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=\columnwidth]{fig3_ibm_hardware_transpilation.png}
+\caption{Hardware transpilation profile on IBM Quantum 156-qubit Heron architecture (\texttt{ibm\_fez}). Showing compiled circuit depth and native gate breakdown (CZ, SX, RZ) for the 4-qubit QTN disentangler and $d=16$ QSVT attention circuit.}
+\label{fig:hardware_transpilation}
+\end{figure}
 
 \begin{table}[htbp]
 \caption{Hardware Transpilation Profiles on \texttt{ibm\_fez}}
+\label{tab:hardware}
 \begin{center}
 \begin{tabular}{lcccc}
 \toprule
